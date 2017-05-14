@@ -10,4 +10,8 @@ pod 'AMap3DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
 pod 'AMapNavi'
+pod 'FTIndicator'
+pod 'swiftScan'
+pod 'LeanCloud'
+pod 'JSAnimatedImagesView'
 end
