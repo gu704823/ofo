@@ -14,6 +14,9 @@
 		4321B8311EC825170042F955 /* uicolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4321B8301EC825170042F955 /* uicolor.swift */; };
 		432A4BB31EC6FBB00072E1C0 /* mypin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432A4BB21EC6FBB00072E1C0 /* mypin.swift */; };
 		433E3B5B1EC77A9C0069F74B /* scanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E3B5A1EC77A9C0069F74B /* scanViewController.swift */; };
+		43491A071EC89BF90088B773 /* arangTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A061EC89BF90088B773 /* arangTableViewController.swift */; };
+		43491A091EC89F1D0088B773 /* network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A081EC89F1D0088B773 /* network.swift */; };
+		43491A0B1EC8A2F30088B773 /* httpmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A0A1EC8A2F30088B773 /* httpmodel.swift */; };
 		435E7B071EC48B6C003D57FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B061EC48B6C003D57FB /* AppDelegate.swift */; };
 		435E7B091EC48B6C003D57FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B081EC48B6C003D57FB /* ViewController.swift */; };
 		435E7B0C1EC48B6C003D57FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435E7B0A1EC48B6C003D57FB /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 		4321B8301EC825170042F955 /* uicolor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uicolor.swift; sourceTree = "<group>"; };
 		432A4BB21EC6FBB00072E1C0 /* mypin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mypin.swift; sourceTree = "<group>"; };
 		433E3B5A1EC77A9C0069F74B /* scanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scanViewController.swift; sourceTree = "<group>"; };
+		43491A061EC89BF90088B773 /* arangTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arangTableViewController.swift; sourceTree = "<group>"; };
+		43491A081EC89F1D0088B773 /* network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = network.swift; sourceTree = "<group>"; };
+		43491A0A1EC8A2F30088B773 /* httpmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpmodel.swift; sourceTree = "<group>"; };
 		435E7B031EC48B6C003D57FB /* ofo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435E7B061EC48B6C003D57FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435E7B081EC48B6C003D57FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +102,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43491A031EC89B6E0088B773 /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				4321B82C1EC824210042F955 /* logoinViewController.swift */,
+			);
+			name = "登陆";
+			sourceTree = "<group>";
+		};
+		43491A041EC89B920088B773 /* 扩展 */ = {
+			isa = PBXGroup;
+			children = (
+				4321B82E1EC824ED0042F955 /* common.swift */,
+				4321B8301EC825170042F955 /* uicolor.swift */,
+				43491A081EC89F1D0088B773 /* network.swift */,
+			);
+			name = "扩展";
+			sourceTree = "<group>";
+		};
+		43491A051EC89BC70088B773 /* 音乐 */ = {
+			isa = PBXGroup;
+			children = (
+				43491A061EC89BF90088B773 /* arangTableViewController.swift */,
+				43491A0A1EC8A2F30088B773 /* httpmodel.swift */,
+			);
+			name = "音乐";
+			sourceTree = "<group>";
+		};
 		435E7AFA1EC48B6C003D57FB = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +154,11 @@
 		435E7B051EC48B6C003D57FB /* ofo */ = {
 			isa = PBXGroup;
 			children = (
-				4321B82E1EC824ED0042F955 /* common.swift */,
-				4321B8301EC825170042F955 /* uicolor.swift */,
+				43491A051EC89BC70088B773 /* 音乐 */,
+				43491A041EC89B920088B773 /* 扩展 */,
+				43491A031EC89B6E0088B773 /* 登陆 */,
 				435E7B061EC48B6C003D57FB /* AppDelegate.swift */,
 				435E7B081EC48B6C003D57FB /* ViewController.swift */,
-				4321B82C1EC824210042F955 /* logoinViewController.swift */,
 				435E7B0A1EC48B6C003D57FB /* Main.storyboard */,
 				4321B82A1EC821950042F955 /* inputcodeViewController.swift */,
 				433E3B5A1EC77A9C0069F74B /* scanViewController.swift */,
@@ -370,8 +403,11 @@
 				435E7B371EC49A9C003D57FB /* menucontroller.swift in Sources */,
 				4321B8311EC825170042F955 /* uicolor.swift in Sources */,
 				435E7B071EC48B6C003D57FB /* AppDelegate.swift in Sources */,
+				43491A091EC89F1D0088B773 /* network.swift in Sources */,
+				43491A071EC89BF90088B773 /* arangTableViewController.swift in Sources */,
 				432A4BB31EC6FBB00072E1C0 /* mypin.swift in Sources */,
 				4321B82D1EC824210042F955 /* logoinViewController.swift in Sources */,
+				43491A0B1EC8A2F30088B773 /* httpmodel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

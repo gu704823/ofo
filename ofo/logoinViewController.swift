@@ -82,36 +82,66 @@ extension logoinViewController{
             switch result{
             case.success(object: _):
                 self.faliure.text = "登录成功"
-                
+                self.logstate()
+                self.dismiss(animated: true, completion: nil)
             case.failure(error: _):
+                self.logstate()
                 self.faliure.text = "登录失败"
-
+                self.dismiss(animated: true, completion: nil)
             }
-            //3.设定关键帧
-            let keyAnimate = CAKeyframeAnimation(keyPath: "position")
-            let keyopacity = CAKeyframeAnimation(keyPath: "opacity")
-            let value0 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: -0.05*kscreenw))
-            let value1 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
-            let value2 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.73*kscreenh))
-            let value3 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
-            let value4 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.74*kscreenh))
-            let value5 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
-            let value6 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
-            let value7 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 1.1*kscreenh))
-            keyAnimate.values = [value0, value1, value2, value3, value4,value5,value6,value7]
-            keyAnimate.autoreverses = false
-            keyAnimate.duration = 5.0
-            keyopacity.values = [0,1,0.9,1,0.95,1,1,0]
-            keyopacity.autoreverses = false
-            keyopacity.duration = 5.0
-            self.faliure.layer.add(keyAnimate, forKey: "keyAnimate")
-            self.faliure.layer.add(keyopacity, forKey: "keyopacity")
-            
-            //                let scale = POPSpringAnimation(propertyNamed:kPOPViewScaleXY)
-            //                scale?.toValue = NSValue(cgPoint: CGPoint(x: 0.5, y: 0.5))
-            //                scale?.springBounciness = 4
-            //                scale?.springSpeed = 1
-            //                self.logout.pop_add(scale, forKey: "scale")
         }
     }
+    func logstate(){
+        //3.设定关键帧
+        let keyAnimate = CAKeyframeAnimation(keyPath: "position")
+        let keyopacity = CAKeyframeAnimation(keyPath: "opacity")
+        let value0 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: -0.05*kscreenw))
+        let value1 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
+        let value2 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.73*kscreenh))
+        let value3 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
+        let value4 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.74*kscreenh))
+        let value5 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
+        let value6 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 0.75*kscreenh))
+        let value7 = NSValue(cgPoint: CGPoint(x: 0.5*kscreenw, y: 1.1*kscreenh))
+        keyAnimate.values = [value0, value1, value2, value3, value4,value5,value6,value7]
+        keyAnimate.autoreverses = false
+        keyAnimate.duration = 5.0
+        keyopacity.values = [0,1,0.9,1,0.95,1,1,0]
+        keyopacity.autoreverses = false
+        keyopacity.duration = 5.0
+        self.faliure.layer.add(keyAnimate, forKey: "keyAnimate")
+        self.faliure.layer.add(keyopacity, forKey: "keyopacity")
+        
+        //                let scale = POPSpringAnimation(propertyNamed:kPOPViewScaleXY)
+        //                scale?.toValue = NSValue(cgPoint: CGPoint(x: 0.5, y: 0.5))
+        //                scale?.springBounciness = 4
+        //                scale?.springSpeed = 1
+        //                self.logout.pop_add(scale, forKey: "scale")
+    }
 }
+//隐藏键盘
+extension logoinViewController:UITextFieldDelegate{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ID.resignFirstResponder()
+        password.resignFirstResponder()
+        logout.resignFirstResponder()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

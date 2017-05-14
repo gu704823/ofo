@@ -14,4 +14,6 @@ pod 'FTIndicator'
 pod 'swiftScan'
 pod 'LeanCloud'
 pod 'JSAnimatedImagesView'
+pod 'SwiftyJSON'
+pod 'Kingfisher'
 end

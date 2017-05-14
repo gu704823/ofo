@@ -19,12 +19,14 @@ PODS:
   - FTIndicator/FTToastIndicator (1.2.0)
   - JSAnimatedImagesView (1.0.0):
     - MSWeakTimer (~> 1.0)
+  - Kingfisher (3.9.0)
   - LeanCloud (10.0.1):
     - LeanCloud/Storage (= 10.0.1)
   - LeanCloud/Storage (10.0.1):
     - Alamofire (~> 4.2.0)
   - MSWeakTimer (1.1.0)
   - swiftScan (1.0.9)
+  - SwiftyJSON (3.1.4)
   - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
@@ -34,8 +36,10 @@ DEPENDENCIES:
   - AMapSearch
   - FTIndicator
   - JSAnimatedImagesView
+  - Kingfisher
   - LeanCloud
   - swiftScan
+  - SwiftyJSON
   - SWRevealViewController
 
 SPEC CHECKSUMS:
@@ -47,11 +51,13 @@ SPEC CHECKSUMS:
   AMapSearch: cf7fd100d533995822d92c22586abfaf7cdf6eef
   FTIndicator: e1c035b99b8df1b1a40702b37cdc12fac5dd057c
   JSAnimatedImagesView: d5c5f561280171ce13f1f08ba9834c47a1f27bfc
+  Kingfisher: 752686a0fbb300df3240ba86431168ab9244bef2
   LeanCloud: 92b302e1a67df962ea09b18f5cf1081c11f5bbce
   MSWeakTimer: 9426150f933b80ed3acf3f6d228e4b61f0e303c8
   swiftScan: fdd1a19174f472838f153b73c3f22bcb29724096
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: e79ab62a2364ba3ebc236aa48737fea35616b496
+PODFILE CHECKSUM: 24757e2ed4243136bea608a4fbb044a9f4c01b5b
 
 COCOAPODS: 1.2.1
