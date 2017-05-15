@@ -6,14 +6,17 @@ target 'ofo' do
   use_frameworks!
 
  pod 'SWRevealViewController'
+ 
 pod 'AMap3DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
 pod 'AMapNavi'
+
 pod 'FTIndicator'
 pod 'swiftScan'
 pod 'LeanCloud'
 pod 'JSAnimatedImagesView'
 pod 'SwiftyJSON'
 pod 'Kingfisher'
+
 end

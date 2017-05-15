@@ -17,6 +17,8 @@
 		43491A071EC89BF90088B773 /* arangTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A061EC89BF90088B773 /* arangTableViewController.swift */; };
 		43491A091EC89F1D0088B773 /* network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A081EC89F1D0088B773 /* network.swift */; };
 		43491A0B1EC8A2F30088B773 /* httpmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A0A1EC8A2F30088B773 /* httpmodel.swift */; };
+		435A61FB1EC9D76300E3058A /* songlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A61FA1EC9D76300E3058A /* songlistViewController.swift */; };
+		435A61FD1EC9F75900E3058A /* songlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A61FC1EC9F75900E3058A /* songlistTableViewCell.swift */; };
 		435E7B071EC48B6C003D57FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B061EC48B6C003D57FB /* AppDelegate.swift */; };
 		435E7B091EC48B6C003D57FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B081EC48B6C003D57FB /* ViewController.swift */; };
 		435E7B0C1EC48B6C003D57FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435E7B0A1EC48B6C003D57FB /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		43491A061EC89BF90088B773 /* arangTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arangTableViewController.swift; sourceTree = "<group>"; };
 		43491A081EC89F1D0088B773 /* network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = network.swift; sourceTree = "<group>"; };
 		43491A0A1EC8A2F30088B773 /* httpmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpmodel.swift; sourceTree = "<group>"; };
+		435A61FA1EC9D76300E3058A /* songlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = songlistViewController.swift; sourceTree = "<group>"; };
+		435A61FC1EC9F75900E3058A /* songlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = songlistTableViewCell.swift; sourceTree = "<group>"; };
 		435E7B031EC48B6C003D57FB /* ofo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435E7B061EC48B6C003D57FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435E7B081EC48B6C003D57FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			children = (
 				43491A061EC89BF90088B773 /* arangTableViewController.swift */,
 				43491A0A1EC8A2F30088B773 /* httpmodel.swift */,
+				435A61FC1EC9F75900E3058A /* songlistTableViewCell.swift */,
+				435A61FA1EC9D76300E3058A /* songlistViewController.swift */,
 			);
 			name = "音乐";
 			sourceTree = "<group>";
@@ -396,6 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				435A61FD1EC9F75900E3058A /* songlistTableViewCell.swift in Sources */,
+				435A61FB1EC9D76300E3058A /* songlistViewController.swift in Sources */,
 				4321B82F1EC824ED0042F955 /* common.swift in Sources */,
 				433E3B5B1EC77A9C0069F74B /* scanViewController.swift in Sources */,
 				435E7B091EC48B6C003D57FB /* ViewController.swift in Sources */,
