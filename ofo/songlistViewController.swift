@@ -9,6 +9,7 @@
 import UIKit
 import  SwiftyJSON
 import Kingfisher
+import AVFoundation
 
 class songlistViewController: UIViewController {
 //拖
@@ -17,6 +18,8 @@ class songlistViewController: UIViewController {
  //定义属性
     var songmodel:httpmodel = httpmodel()
     var songdict:[[String:JSON]] = []
+    var id:JSON = 0
+    var audioplayer = AVAudioPlayer()
     var albumdict:[String:JSON]?{
         didSet{
             guard let urlrequest = albumdict?["albumimg"] else {
@@ -75,14 +78,31 @@ extension songlistViewController:UITableViewDataSource,UITableViewDelegate{
 //loaddata
 extension songlistViewController{
     fileprivate func loaddata(){
-        songmodel.onsearhlist(type: "2", size: 15) { ( data1, data2) in
+        songmodel.onsearhlist(type: "\(id)") { ( data1, data2) in
+
             self.songdict = data2
             self.albumdict = data1
             self.songlist.reloadData()
         }
+        
     }
 }
 //处理逻辑
 extension songlistViewController{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let songid = songdict[indexPath.row]["songid"]!
+        songmodel.getmusicdata(songid: "\(songid)") { (filelink) in
+            print(filelink)
+            print("----------")
+            let url = URL(string: "\(filelink)")
+                    do{
+                        try self.audioplayer = AVAudioPlayer(contentsOf: url!)
+                        self.audioplayer.prepareToPlay()
+                        self.audioplayer.play()
+                    }
+                    catch{
+                        print(error)
+                    }
+        }
+    }
 }

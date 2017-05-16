@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tKU-Qd-ONx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tKU-Qd-ONx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -122,18 +122,24 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBM-wN-gop" id="fIl-64-XTq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-gD-g3o">
-                                            <rect key="frame" x="20" y="9" width="60" height="60"/>
+                                            <rect key="frame" x="20" y="9" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="Kgh-Zg-e5u"/>
-                                                <constraint firstAttribute="width" constant="60" id="btN-ZL-xlQ"/>
+                                                <constraint firstAttribute="width" constant="80" id="btN-ZL-xlQ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-mg-60Y">
-                                            <rect key="frame" x="88" y="29" width="42" height="21"/>
+                                            <rect key="frame" x="108" y="29" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8L-II-B7H">
+                                            <rect key="frame" x="317" y="30" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -143,13 +149,16 @@
                                         <constraint firstItem="uw5-gD-g3o" firstAttribute="leading" secondItem="fIl-64-XTq" secondAttribute="leadingMargin" constant="12" id="7d2-Mi-rOE"/>
                                         <constraint firstItem="uw5-gD-g3o" firstAttribute="centerY" secondItem="fIl-64-XTq" secondAttribute="centerY" id="Bl0-xQ-C6q"/>
                                         <constraint firstItem="xSm-mg-60Y" firstAttribute="leading" secondItem="uw5-gD-g3o" secondAttribute="trailing" constant="8" id="N4W-Cu-wrV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="T8L-II-B7H" secondAttribute="trailing" constant="8" id="nX6-8w-wha"/>
                                         <constraint firstItem="xSm-mg-60Y" firstAttribute="centerY" secondItem="fIl-64-XTq" secondAttribute="centerY" id="nvM-OB-FAg"/>
+                                        <constraint firstItem="T8L-II-B7H" firstAttribute="centerY" secondItem="fIl-64-XTq" secondAttribute="centerY" id="yq8-ZN-X5u"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="channelimg" destination="uw5-gD-g3o" id="WND-Pa-Y2o"/>
                                     <outlet property="channellist" destination="xSm-mg-60Y" id="07E-x2-pRz"/>
-                                    <segue destination="4FG-vj-c4Y" kind="show" id="ET3-Wb-eTn"/>
+                                    <outlet property="id" destination="T8L-II-B7H" id="CFn-6o-p8O"/>
+                                    <segue destination="4FG-vj-c4Y" kind="show" identifier="showDetail" id="ET3-Wb-eTn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -194,7 +203,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="44h-vC-ks5" id="mV9-hi-dC9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QQZone" translatesAutoresizingMaskIntoConstraints="NO" id="317-CS-ty6">

@@ -10,6 +10,7 @@ import UIKit
 
 class channellistTableViewCell: UITableViewCell {
     @IBOutlet weak var channelimg: UIImageView!
+    @IBOutlet weak var id: UILabel!
 
     @IBOutlet weak var channellist: UILabel!
     override func awakeFromNib() {

@@ -130,10 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				43491A061EC89BF90088B773 /* arangTableViewController.swift */,
+				BB5343011ECABD14002897B2 /* channellistTableViewCell.swift */,
 				43491A0A1EC8A2F30088B773 /* httpmodel.swift */,
 				435A61FC1EC9F75900E3058A /* songlistTableViewCell.swift */,
 				435A61FA1EC9D76300E3058A /* songlistViewController.swift */,
-				BB5343011ECABD14002897B2 /* channellistTableViewCell.swift */,
 			);
 			name = "音乐";
 			sourceTree = "<group>";

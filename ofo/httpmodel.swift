@@ -15,7 +15,7 @@ class httpmodel: NSObject {
     func onesong(number:Int,json:JSON)->[String:JSON]{
         var songdict:[String:JSON] = [:]
         let title = json["song_list"][number]["title"]
-        let pict = json["song_list"][number]["pic_big"]
+        let pict = json["song_list"][number]["pic_small"]
         let author = json["song_list"][number]["author"]
         let songid = json["song_list"][number]["song_id"]
         let file_duration = json["song_list"][number]["file_duration"]
@@ -27,11 +27,11 @@ class httpmodel: NSObject {
         return songdict
     }
     //电台列表
-    func onsearhlist(type:String,size:Int,completion:@escaping (_ albumdict:[String:JSON],_ songdict:[[String:JSON]])->()){
+    func onsearhlist(type:String,completion:@escaping (_ albumdict:[String:JSON],_ songdict:[[String:JSON]])->()){
         var albumdict:[String:JSON] = [:]
         var onedict:[String:JSON] = [:]
         var songdict:[[String:JSON]] = []
-        let parameters = ["method":"baidu.ting.billboard.billList","type":type,"size":"\(size)","offset":"0"]
+        let parameters = ["method":"baidu.ting.billboard.billList","type":type,"size":"30","offset":"0"]
         network.requestdata(url: url, parameters: parameters, method: .get) { (result) in
             let json = JSON(result)
            let name = json["billboard"]["name"]
@@ -42,7 +42,7 @@ class httpmodel: NSObject {
             albumdict["updatatime"] = updatatime
             albumdict["albumimg"] = albumimg
             
-            for i in 0..<size{
+            for i in 0..<json["song_list"].count{
                 onedict = self.onesong(number: i, json: json)
                 songdict.append(onedict)
             }
@@ -59,36 +59,39 @@ class httpmodel: NSObject {
             let name = json["billboard"]["name"]
             channeldict["albumimg"] = albumimg
             channeldict["name"] = name
+            channeldict["id"] = JSON(type)
             completion(channeldict)
         }
-        
     }
-    func onsearchtotalchannel(completion:(_ result:[[String:JSON]])->()){
+    func onsearchtotalchannel(completion:@escaping (_ dict:[[String:JSON]])->()){
+        var channelarry:[[String:JSON]] = []
+        var dict:[String:JSON]?{
+            didSet{
+                channelarry.append(dict!)
+                completion(channelarry)
+            }
+        }
         let arry = [1,2,6,8,9,11,20,21,22,23,24,25,31]
-        var channelarry:[[String:JSON]]?{
-            didSet{
-               
-            }
-        }
-        var onedict:[String:JSON]?{
-            didSet{
-                channelarry?.append(onedict!)
-            }
-        }
         for i in arry{
             onsearchchannel(type: i) { (data) in
-                onedict = data
+                dict = data
             }
         }
-       
-        //completion(channelarry)
-        
+    }
+    func getmusicdata(songid:String,completion:@escaping (_ filelink:JSON)->()){
+        let parameters = ["method":"baidu.ting.song.play","songid":songid]
+        network.requestdata(url: url, parameters: parameters, method: .get) {
+            (result) in
+            let json = JSON(result)
+            let filelink = json["bitrate"]["file_link"]
+            completion(filelink)
+        }
     }
 }
 /*
- http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=31&size=30&offset=0
+ http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=6&size=30&offset=0
  
- 
+ http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.song.play&songid=826361
  
  一、获取列表
  format=json或xml&calback=&from=webapp_music&method=
