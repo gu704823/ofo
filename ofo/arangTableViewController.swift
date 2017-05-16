@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class arangTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -18,7 +18,8 @@ class arangTableViewController: UITableViewController {
 //拖
 //定义属性
     let datamodel:httpmodel = httpmodel()
-    var listdata = ["新歌榜","热歌榜","摇滚榜","爵士","流行","欧美金曲榜","经典老歌榜","情歌对唱榜","影视金曲榜","网络歌曲榜"]
+    var listdata:[[String:JSON]] = []
+    
 }
 //setupui
 extension arangTableViewController{
@@ -39,8 +40,11 @@ extension arangTableViewController{
         return listdata.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listcellid", for: indexPath)
-        cell.textLabel?.text = listdata[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listcellid", for: indexPath) as! channellistTableViewCell
+//        cell.channellist.text = "\(listdata[indexPath.row]["name"]!)"
+//        let urladdr = listdata[indexPath.row]["albumimg"]
+//        let url = URL(string: "\(urladdr!)")
+//        cell.channelimg.kf.setImage(with:url )
         return cell
     }
     
@@ -48,7 +52,10 @@ extension arangTableViewController{
 //loaddata
 extension arangTableViewController{
     fileprivate func lodadata(){
-        
+       datamodel.onsearchtotalchannel { (result) in
+        self.listdata = result
+        self.tableView.reloadData()
+        }
     }
 }
 

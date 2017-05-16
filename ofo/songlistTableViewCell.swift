@@ -16,7 +16,8 @@ class songlistTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+       author.layer.cornerRadius = author.frame.width/2
+       author.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

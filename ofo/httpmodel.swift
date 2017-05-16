@@ -49,15 +49,52 @@ class httpmodel: NSObject {
             completion(albumdict, songdict)
         }
     }
+    //频道列表
+    func onsearchchannel(type:Int,completion:@escaping (_ channel:[String:JSON])->()){
+        var channeldict:[String:JSON] = [:]
+        let parameters = ["method":"baidu.ting.billboard.billList","type":"\(type)","size":"10","offset":"0"]
+        network.requestdata(url: url, parameters: parameters, method: .get) { (result) in
+            let json = JSON(result)
+            let albumimg = json["billboard"]["pic_s210"]
+            let name = json["billboard"]["name"]
+            channeldict["albumimg"] = albumimg
+            channeldict["name"] = name
+            completion(channeldict)
+        }
+        
+    }
+    func onsearchtotalchannel(completion:(_ result:[[String:JSON]])->()){
+        let arry = [1,2,6,8,9,11,20,21,22,23,24,25,31]
+        var channelarry:[[String:JSON]]?{
+            didSet{
+               
+            }
+        }
+        var onedict:[String:JSON]?{
+            didSet{
+                channelarry?.append(onedict!)
+            }
+        }
+        for i in arry{
+            onsearchchannel(type: i) { (data) in
+                onedict = data
+            }
+        }
+       
+        //completion(channelarry)
+        
+    }
 }
 /*
- http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=1&size=30&offset=0
+ http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=31&size=30&offset=0
  
- http://tingapi.ting.baidu.com/v1/restserver/ting
+ 
+ 
  一、获取列表
  format=json或xml&calback=&from=webapp_music&method=
  method=baidu.ting.billboard.billList&type=1&size=10&offset=0
- 参数：	type = 1-新歌榜,2-热歌榜,11-摇滚榜,12-爵士,16-流行,21-欧美金曲榜,22-经典老歌榜,23-情歌对唱榜,24-影视金曲榜,25-网络歌曲榜
+ 参数：	type = 1-新歌榜a,2-热歌榜a,11-摇滚榜a,21-欧美金曲榜a,22-经典老歌榜a,23-情歌对唱榜a,24/14-影视金曲榜a,25-网络歌曲榜a,6-ktv热歌榜a
+ ,8-Billboarda,9-雪碧音碰音榜a,20-华语金曲榜a,31-中国好声音榜a
  size = 10 //返回条目数量
  offset = 0 //获取偏移
  三、搜索

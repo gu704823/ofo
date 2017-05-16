@@ -17,14 +17,20 @@ class songlistViewController: UIViewController {
  //定义属性
     var songmodel:httpmodel = httpmodel()
     var songdict:[[String:JSON]] = []
-    var albumdict:[String:JSON] = [:]
+    var albumdict:[String:JSON]?{
+        didSet{
+            guard let urlrequest = albumdict?["albumimg"] else {
+                return
+            }
+            let url = URL(string: "\(urlrequest)")
+            albumimg.kf.setImage(with: url)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupui()
         loaddata()
-        
-        
     }
 
 }
@@ -70,12 +76,8 @@ extension songlistViewController:UITableViewDataSource,UITableViewDelegate{
 extension songlistViewController{
     fileprivate func loaddata(){
         songmodel.onsearhlist(type: "2", size: 15) { ( data1, data2) in
-          let url = data1["albumimg"]
-            let rl = URL(string: "\(url!)")
-            self.albumimg.kf.setImage(with: rl)
             self.songdict = data2
-             self.albumdict = data1
-            //print(data1)
+            self.albumdict = data1
             self.songlist.reloadData()
         }
     }

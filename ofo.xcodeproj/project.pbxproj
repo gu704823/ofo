@@ -27,6 +27,7 @@
 		435E7B271EC48B6C003D57FB /* ofoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B261EC48B6C003D57FB /* ofoUITests.swift */; };
 		435E7B351EC48CB9003D57FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435E7B341EC48CB9003D57FB /* Assets.xcassets */; };
 		435E7B371EC49A9C003D57FB /* menucontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E7B361EC49A9C003D57FB /* menucontroller.swift */; };
+		BB5343021ECABD14002897B2 /* channellistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5343011ECABD14002897B2 /* channellistTableViewCell.swift */; };
 		DE7EC65A56B8688BAFA16749 /* Pods_ofo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842AD71A55415BA51935060C /* Pods_ofo.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		435E7B381EC49DF9003D57FB /* ofo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ofo-Bridging-Header.h"; sourceTree = "<group>"; };
 		842AD71A55415BA51935060C /* Pods_ofo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ofo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C892E69B44882AAD6CEE2C7 /* Pods-ofo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ofo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ofo/Pods-ofo.release.xcconfig"; sourceTree = "<group>"; };
+		BB5343011ECABD14002897B2 /* channellistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = channellistTableViewCell.swift; sourceTree = "<group>"; };
 		CCE71474DFDC03ADBDF8DE13 /* Pods-ofo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ofo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ofo/Pods-ofo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				43491A0A1EC8A2F30088B773 /* httpmodel.swift */,
 				435A61FC1EC9F75900E3058A /* songlistTableViewCell.swift */,
 				435A61FA1EC9D76300E3058A /* songlistViewController.swift */,
+				BB5343011ECABD14002897B2 /* channellistTableViewCell.swift */,
 			);
 			name = "音乐";
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				43491A091EC89F1D0088B773 /* network.swift in Sources */,
 				43491A071EC89BF90088B773 /* arangTableViewController.swift in Sources */,
 				432A4BB31EC6FBB00072E1C0 /* mypin.swift in Sources */,
+				BB5343021ECABD14002897B2 /* channellistTableViewCell.swift in Sources */,
 				4321B82D1EC824210042F955 /* logoinViewController.swift in Sources */,
 				43491A0B1EC8A2F30088B773 /* httpmodel.swift in Sources */,
 			);
