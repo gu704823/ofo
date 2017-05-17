@@ -15,11 +15,18 @@ class songlistViewController: UIViewController {
 //拖
     @IBOutlet weak var songlist: UITableView!
     @IBOutlet weak var albumimg: UIImageView!
+    @IBOutlet weak var songpic: UIButton!
+    @IBOutlet weak var songname: UILabel!
+    @IBOutlet weak var artist: UILabel!
+   
+   
+    
+    
  //定义属性
     var songmodel:httpmodel = httpmodel()
     var songdict:[[String:JSON]] = []
     var id:JSON = 0
-    var audioplayer = AVAudioPlayer()
+    var avplayer = AVPlayer()
     var albumdict:[String:JSON]?{
         didSet{
             guard let urlrequest = albumdict?["albumimg"] else {
@@ -69,6 +76,8 @@ extension songlistViewController:UITableViewDataSource,UITableViewDelegate{
         cell.author.kf.setImage(with:url )
         cell.singer.text = "\(songdict[indexPath.row]["author"]!)"
         cell.title.text = "\(songdict[indexPath.row]["title"]!)"
+        let timedurtation = Int(songdict[indexPath.row]["file_duration"]! .stringValue)
+        cell.time.text = lengthtime.length(all: timedurtation!)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,17 +101,16 @@ extension songlistViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let songid = songdict[indexPath.row]["songid"]!
         songmodel.getmusicdata(songid: "\(songid)") { (filelink) in
-            print(filelink)
-            print("----------")
             let url = URL(string: "\(filelink)")
-                    do{
-                        try self.audioplayer = AVAudioPlayer(contentsOf: url!)
-                        self.audioplayer.prepareToPlay()
-                        self.audioplayer.play()
-                    }
-                    catch{
-                        print(error)
-                    }
+            self.avplayer = AVPlayer(url: url!)
+            self.avplayer.play()
         }
+        songname.text = "\(songdict[indexPath.row]["title"]!)"
+        artist.text = "\(songdict[indexPath.row]["author"]!)"
+        let urladdr = songdict[indexPath.row]["pict"]
+        guard let songpicurl = URL(string: "\(urladdr!)") else {
+            return
+        }
+         songpic.kf.setImage(with: songpicurl, for: .normal)
     }
 }

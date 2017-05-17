@@ -13,6 +13,7 @@
 		4321B82F1EC824ED0042F955 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4321B82E1EC824ED0042F955 /* common.swift */; };
 		4321B8311EC825170042F955 /* uicolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4321B8301EC825170042F955 /* uicolor.swift */; };
 		432A4BB31EC6FBB00072E1C0 /* mypin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432A4BB21EC6FBB00072E1C0 /* mypin.swift */; };
+		433409231ECC02360017F454 /* time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433409221ECC02360017F454 /* time.swift */; };
 		433E3B5B1EC77A9C0069F74B /* scanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E3B5A1EC77A9C0069F74B /* scanViewController.swift */; };
 		43491A071EC89BF90088B773 /* arangTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A061EC89BF90088B773 /* arangTableViewController.swift */; };
 		43491A091EC89F1D0088B773 /* network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43491A081EC89F1D0088B773 /* network.swift */; };
@@ -55,6 +56,7 @@
 		4321B82E1EC824ED0042F955 /* common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
 		4321B8301EC825170042F955 /* uicolor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uicolor.swift; sourceTree = "<group>"; };
 		432A4BB21EC6FBB00072E1C0 /* mypin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mypin.swift; sourceTree = "<group>"; };
+		433409221ECC02360017F454 /* time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = time.swift; sourceTree = "<group>"; };
 		433E3B5A1EC77A9C0069F74B /* scanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scanViewController.swift; sourceTree = "<group>"; };
 		43491A061EC89BF90088B773 /* arangTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arangTableViewController.swift; sourceTree = "<group>"; };
 		43491A081EC89F1D0088B773 /* network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = network.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		43491A041EC89B920088B773 /* 扩展 */ = {
 			isa = PBXGroup;
 			children = (
+				433409221ECC02360017F454 /* time.swift */,
 				4321B82E1EC824ED0042F955 /* common.swift */,
 				4321B8301EC825170042F955 /* uicolor.swift */,
 				43491A081EC89F1D0088B773 /* network.swift */,
@@ -409,6 +412,7 @@
 				435A61FB1EC9D76300E3058A /* songlistViewController.swift in Sources */,
 				4321B82F1EC824ED0042F955 /* common.swift in Sources */,
 				433E3B5B1EC77A9C0069F74B /* scanViewController.swift in Sources */,
+				433409231ECC02360017F454 /* time.swift in Sources */,
 				435E7B091EC48B6C003D57FB /* ViewController.swift in Sources */,
 				4321B82B1EC821950042F955 /* inputcodeViewController.swift in Sources */,
 				435E7B371EC49A9C003D57FB /* menucontroller.swift in Sources */,
