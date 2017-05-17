@@ -15,9 +15,11 @@ class songlistViewController: UIViewController {
 //拖
     @IBOutlet weak var songlist: UITableView!
     @IBOutlet weak var albumimg: UIImageView!
-    @IBOutlet weak var songpic: UIButton!
+    
+    @IBOutlet weak var songpic: roundbutton!
     @IBOutlet weak var songname: UILabel!
     @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var playpause: UIButton!
    
    
     
@@ -26,7 +28,6 @@ class songlistViewController: UIViewController {
     var songmodel:httpmodel = httpmodel()
     var songdict:[[String:JSON]] = []
     var id:JSON = 0
-    var avplayer = AVPlayer()
     var albumdict:[String:JSON]?{
         didSet{
             guard let urlrequest = albumdict?["albumimg"] else {
@@ -36,11 +37,14 @@ class songlistViewController: UIViewController {
             albumimg.kf.setImage(with: url)
         }
     }
+    var avplayer = AVPlayer()
+    var isplay:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupui()
         loaddata()
+        threebutton()
     }
 
 }
@@ -76,8 +80,10 @@ extension songlistViewController:UITableViewDataSource,UITableViewDelegate{
         cell.author.kf.setImage(with:url )
         cell.singer.text = "\(songdict[indexPath.row]["author"]!)"
         cell.title.text = "\(songdict[indexPath.row]["title"]!)"
-        let timedurtation = Int(songdict[indexPath.row]["file_duration"]! .stringValue)
-        cell.time.text = lengthtime.length(all: timedurtation!)
+        guard  let timedurtation = Int(songdict[indexPath.row]["file_duration"]! .stringValue) else{
+            return cell
+        }
+        cell.time.text = lengthtime.length(all: timedurtation)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,6 +105,7 @@ extension songlistViewController{
 //处理逻辑
 extension songlistViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        songlist.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         let songid = songdict[indexPath.row]["songid"]!
         songmodel.getmusicdata(songid: "\(songid)") { (filelink) in
             let url = URL(string: "\(filelink)")
@@ -112,5 +119,24 @@ extension songlistViewController{
             return
         }
          songpic.kf.setImage(with: songpicurl, for: .normal)
+        songpic.onrotation()
+    }
+    fileprivate func threebutton(){
+        playpause.addTarget(self, action: #selector(play), for: .touchUpInside)
+    }
+}
+extension songlistViewController{
+     @objc fileprivate func play(){
+        if isplay{
+            avplayer.pause()
+            playpause.setBackgroundImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            isplay = !isplay
+            songpic.pause()
+        }else{
+            avplayer.play()
+            playpause.setBackgroundImage(#imageLiteral(resourceName: "play"), for: .normal)
+            isplay = !isplay
+            songpic.onrotation()
+        }
     }
 }
