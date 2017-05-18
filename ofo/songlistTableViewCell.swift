@@ -14,6 +14,7 @@ class songlistTableViewCell: UITableViewCell {
     @IBOutlet weak var singer: UILabel!
     @IBOutlet weak var time: UILabel!
 
+    @IBOutlet weak var currentime: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
        author.layer.cornerRadius = author.frame.width/2

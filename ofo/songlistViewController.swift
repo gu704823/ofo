@@ -15,12 +15,15 @@ class songlistViewController: UIViewController {
 //拖
     @IBOutlet weak var songlist: UITableView!
     @IBOutlet weak var albumimg: UIImageView!
+    @IBOutlet weak var progres: UIImageView!
     
     @IBOutlet weak var songpic: roundbutton!
     @IBOutlet weak var songname: UILabel!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var playpause: UIButton!
-   
+    @IBOutlet weak var currenttime: UILabel!
+    @IBOutlet weak var totaltime: UILabel!
+    @IBOutlet weak var nextbutton: UIButton!
    
     
     
@@ -39,6 +42,8 @@ class songlistViewController: UIViewController {
     }
     var avplayer = AVPlayer()
     var isplay:Bool = true
+    var timer:Timer?
+    var  index:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,30 +107,60 @@ extension songlistViewController{
         
     }
 }
-//处理逻辑
+//点击cell处理逻辑
 extension songlistViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        songlist.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-        let songid = songdict[indexPath.row]["songid"]!
-        songmodel.getmusicdata(songid: "\(songid)") { (filelink) in
-            let url = URL(string: "\(filelink)")
-            self.avplayer = AVPlayer(url: url!)
-            self.avplayer.play()
-        }
-        songname.text = "\(songdict[indexPath.row]["title"]!)"
-        artist.text = "\(songdict[indexPath.row]["author"]!)"
-        let urladdr = songdict[indexPath.row]["pict"]
+        
+        onselectrow(index: indexPath.row)
+        
+        
+        
+    }
+    func onselectrow(index:Int){
+        let indexpatch = IndexPath(item: index, section: 0)
+        songlist.selectRow(at: indexpatch, animated: true, scrollPosition: .top)
+        songname.text = "\(songdict[indexpatch.row]["title"]!)"
+        artist.text = "\(songdict[indexpatch.row]["author"]!)"
+        let urladdr = songdict[indexpatch.row]["pict"]
         guard let songpicurl = URL(string: "\(urladdr!)") else {
             return
         }
-         songpic.kf.setImage(with: songpicurl, for: .normal)
+        songpic.kf.setImage(with: songpicurl, for: .normal)
         songpic.onrotation()
+        let songid = songdict[indexpatch.row]["songid"]!
+        songmodel.getmusicdata(songid: "\(songid)") { (filelink) in
+            self.onplaymusic(filelinkurl: "\(filelink)")
+        }
+        //时间
+        timer?.invalidate()
+        currenttime.text = "00:00"
+        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(onupdate), userInfo: nil, repeats: true)
     }
+    func onplaymusic(filelinkurl:String){
+        let url = URL(string: filelinkurl)
+        self.avplayer = AVPlayer(url: url!)
+        self.avplayer.play()
+    }
+//最下面三个按钮的方法
     fileprivate func threebutton(){
         playpause.addTarget(self, action: #selector(play), for: .touchUpInside)
+        nextbutton.addTarget(self, action: #selector(nextmusic), for: .touchUpInside)
+        
     }
 }
 extension songlistViewController{
+    //更新时间方法
+    @objc fileprivate func onupdate(){
+        let currenttimer = CMTimeGetSeconds(self.avplayer.currentTime())
+        let totaltimer = TimeInterval((avplayer.currentItem?.duration.value)!)/TimeInterval((avplayer.currentItem?.duration.timescale)!)
+        let progr = CGFloat(currenttimer/totaltimer)
+        if currenttimer>0.0{
+            currenttime.text = lengthtime.length(all: Int(currenttimer))
+            totaltime.text = lengthtime.length(all: Int(totaltimer))
+            self.progres.frame.size.width = view.frame.size.width * progr
+            
+        }
+    }
      @objc fileprivate func play(){
         if isplay{
             avplayer.pause()
@@ -138,5 +173,16 @@ extension songlistViewController{
             isplay = !isplay
             songpic.onrotation()
         }
+    }
+    @objc fileprivate func nextmusic(btn:UIButton){
+        if btn == nextbutton{
+            index += 1
+            if index>self.songdict.count - 1{
+             index = 0
+            }
+        }
+        onselectrow(index: index)
+        playpause.setBackgroundImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        isplay = !isplay
     }
 }
